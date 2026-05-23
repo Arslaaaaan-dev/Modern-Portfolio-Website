@@ -29,7 +29,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+          src="https://res.cloudinary.com/dccm287b8/image/upload/v1779554275/Edit_this_photo_very_naturally_202605191401_g0slui.jpg"
           alt="Profile"
           className="w-32 h-32 rounded-full border-2 border-neon-purple shadow-[0_0_20px_#bc13fe] object-cover mb-6"
         />
