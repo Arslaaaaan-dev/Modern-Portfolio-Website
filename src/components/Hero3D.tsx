@@ -57,7 +57,7 @@ const AbstractShape = () => {
 
   return (
     <mesh ref={meshRef} scale={1.5}>
-      <icosahedronGeometry args={[1, 1]} />
+      <sphereGeometry args={[1, 32, 32]} />
       <meshStandardMaterial
         color="#bc13fe"
         wireframe

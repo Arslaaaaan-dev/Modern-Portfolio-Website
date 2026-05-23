@@ -8,7 +8,7 @@ const links = [
   { name: "Email", icon: Mail, url: "mailto:hello@example.com", color: "hover:text-blue-400" },
   { name: "LinkedIn", icon: Briefcase, url: "https://linkedin.com", color: "hover:text-blue-500" },
   { name: "GitHub", icon: Code2, url: "https://github.com", color: "hover:text-white" },
-  { name: "CameraIcon", icon: Camera, url: "https://instagram.com", color: "hover:text-pink-500" },
+  { name: "Instagram", icon: Camera, url: "https://instagram.com", color: "hover:text-pink-500" },
   { name: "WhatsApp", icon: Phone, url: "https://wa.me/1234567890", color: "hover:text-green-500" },
 ];
 

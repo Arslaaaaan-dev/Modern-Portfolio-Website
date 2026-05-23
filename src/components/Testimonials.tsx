@@ -52,12 +52,14 @@ export default function Testimonials() {
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="absolute inset-0 flex flex-col items-center text-center justify-center"
               >
+                <div className="glass-card p-10 mx-4 md:mx-auto max-w-2xl flex flex-col items-center">
                 <p className="text-xl md:text-3xl font-light text-white leading-relaxed mb-10">
                   &quot;{testimonial.text}&quot;
                 </p>
                 <div>
                   <h5 className="text-lg font-bold text-white mb-1">{testimonial.author}</h5>
                   <span className="text-sm text-neon-blue font-mono">{testimonial.role}</span>
+                </div>
                 </div>
               </motion.div>
             ))}

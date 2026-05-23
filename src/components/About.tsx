@@ -59,10 +59,14 @@ export default function About() {
             <h4 className="text-xl font-display font-bold mb-8 text-white">Experience</h4>
             <div className="space-y-8">
               {timeline.map((item, i) => (
-                <div key={i} className="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-neon-purple before:rounded-full after:absolute after:left-[3px] after:top-6 after:w-[2px] after:h-[calc(100%+16px)] last:after:hidden after:bg-white/10">
+                <div key={i} className="relative pl-12 before:absolute before:-left-1.5 before:top-6 before:w-3 before:h-3 before:bg-neon-purple before:rounded-full after:absolute after:left-0 after:top-10 after:w-[2px] after:h-[calc(100%+8px)] last:after:hidden after:bg-gradient-to-b after:from-neon-purple after:to-transparent">
+                  <div className="p-4 hover:bg-white/5 rounded-lg transition-colors border border-transparent hover:border-white/5">
+
                   <span className="text-xs font-mono text-neon-blue mb-1 block">{item.year}</span>
                   <h5 className="text-lg font-bold text-white">{item.role}</h5>
                   <p className="text-white/50 text-sm">{item.company}</p>
+
+                  </div>
                 </div>
               ))}
             </div>
