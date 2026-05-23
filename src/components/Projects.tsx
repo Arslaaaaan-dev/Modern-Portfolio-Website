@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { X } from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -34,6 +35,7 @@ const projects = [
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
 
   return (
@@ -58,7 +60,8 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
 
 
-              className={`group relative rounded-3xl overflow-hidden cursor-none ${index % 2 !== 0 ? 'md:mt-16' : ''}`}
+              className={`group relative rounded-3xl overflow-hidden cursor-pointer hover:scale-105 hover:-rotate-1 hover:shadow-[0_0_30px_rgba(0,243,255,0.3)] transition-all duration-500 ${index % 2 !== 0 ? 'md:mt-16' : ''}`}
+              onClick={() => setSelectedProject(project)}
             >
               {/* Project Image Area */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-white/5">
@@ -96,7 +99,48 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
+
       </div>
+
+      {selectedProject && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-6" onClick={() => setSelectedProject(null)}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="relative w-full max-w-4xl bg-white/5 border border-white/10 rounded-3xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black text-white rounded-full transition-colors"
+              onClick={() => setSelectedProject(null)}
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="relative aspect-video w-full">
+              <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-8">
+                <span className="text-sm font-mono text-neon-blue mb-2 block">{selectedProject.category}</span>
+                <h3 className="text-3xl md:text-5xl font-display font-bold text-white">{selectedProject.title}</h3>
+              </div>
+            </div>
+            <div className="p-8 bg-black/50">
+              <p className="text-white/70 text-lg font-light leading-relaxed">
+                Detailed view of {selectedProject.title}. This project showcases advanced techniques in {selectedProject.category.toLowerCase()}, focusing on delivering a premium user experience with modern design principles.
+              </p>
+              <div className="mt-8 flex gap-4">
+                <button className="px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-white/90 transition-colors">
+                  View Live Site
+                </button>
+                <button className="px-6 py-3 border border-white/20 bg-white/5 hover:bg-white/10 text-white rounded-full font-medium transition-colors">
+                  Read Case Study
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 }

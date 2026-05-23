@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -8,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-10 border-t border-white/5 bg-black/80 backdrop-blur-lg">
+    <motion.footer className="relative z-10 border-t border-white/5 bg-black/80 backdrop-blur-lg" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
 
@@ -31,6 +32,6 @@ export default function Footer() {
 
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

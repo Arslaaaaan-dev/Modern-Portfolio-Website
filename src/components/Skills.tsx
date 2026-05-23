@@ -61,16 +61,26 @@ export default function Skills() {
                   <h4 className="text-lg font-bold text-white">{skill.name}</h4>
                 </div>
 
-                <div className="relative w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                  <motion.div
-                    className={`absolute top-0 left-0 h-full bg-gradient-to-r ${skill.color}`}
-                    initial={{ width: 0 }}
-                    animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                    transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                  />
-                </div>
-                <div className="mt-2 text-right text-xs text-white/50 font-mono">
-                  {skill.level}%
+                <div className="relative w-16 h-16 flex items-center justify-center mx-auto">
+                  <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
+                    <circle cx="18" cy="18" r="16" fill="none" className="stroke-white/10" strokeWidth="4" />
+                    <motion.circle
+                      cx="18"
+                      cy="18"
+                      r="16"
+                      fill="none"
+                      className="stroke-neon-blue"
+                      strokeWidth="4"
+                      strokeDasharray="100"
+                      initial={{ strokeDashoffset: 100 }}
+                      animate={isInView ? { strokeDashoffset: 100 - skill.level } : { strokeDashoffset: 100 }}
+                      transition={{ duration: 1.5, delay: 0.5 + index * 0.1, ease: "easeOut" }}
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center text-xs font-mono text-white/80">
+                    {skill.level}%
+                  </div>
                 </div>
               </motion.div>
             );

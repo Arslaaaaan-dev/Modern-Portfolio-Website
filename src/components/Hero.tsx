@@ -1,17 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Hero3D from "./Hero3D";
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <Hero3D />
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background z-10 pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-20 flex flex-col items-center text-center">
+      <motion.div style={{ y }} className="container mx-auto px-6 relative z-20 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -22,14 +25,22 @@ export default function Hero() {
           <span className="text-sm font-medium tracking-wide text-white/80">Available for freelance work</span>
         </motion.div>
 
+        <motion.img
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+          alt="Profile"
+          className="w-32 h-32 rounded-full border-2 border-neon-purple shadow-[0_0_20px_#bc13fe] object-cover mb-6"
+        />
+
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tighter mb-6"
         >
-          CREATIVE <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple text-glow">DEVELOPER</span>
-          <br /> & DESIGNER
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple text-glow">SAYYED</span> ARSLAAN
         </motion.h1>
 
         <motion.p
@@ -63,7 +74,7 @@ export default function Hero() {
             Contact Me
           </a>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
