@@ -2,14 +2,14 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Camera, Briefcase, Code2, Mail, Phone } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaGithub, FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 const links = [
-  { name: "Email", icon: Mail, url: "mailto:hello@example.com", color: "hover:text-blue-400" },
-  { name: "LinkedIn", icon: Briefcase, url: "https://linkedin.com", color: "hover:text-blue-500" },
-  { name: "GitHub", icon: Code2, url: "https://github.com", color: "hover:text-white" },
-  { name: "Instagram", icon: Camera, url: "https://instagram.com", color: "hover:text-pink-500" },
-  { name: "WhatsApp", icon: Phone, url: "https://wa.me/1234567890", color: "hover:text-green-500" },
+  { name: "LinkedIn", icon: FaLinkedin, url: "https://www.linkedin.com/in/sayyedarslaan/", color: "group-hover:text-[#0077b5] group-hover:drop-shadow-[0_0_8px_rgba(0,119,181,0.5)]" },
+  { name: "WhatsApp", icon: FaWhatsapp, url: "https://wa.me/916394705564", color: "group-hover:text-[#25D366] group-hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.5)]" },
+  { name: "Instagram", icon: FaInstagram, url: "https://instagram.com/sayyed_arslaaaaan", color: "group-hover:text-[#E1306C] group-hover:drop-shadow-[0_0_8px_rgba(225,48,108,0.5)]" },
+  { name: "Email", icon: FaEnvelope, url: "mailto:arslaan.developer@gmail.com", color: "group-hover:text-[#EA4335] group-hover:drop-shadow-[0_0_8px_rgba(234,67,53,0.5)]" },
+  { name: "GitHub", icon: FaGithub, url: "https://github.com", color: "group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" },
 ];
 
 export default function SocialContact() {
@@ -46,6 +46,7 @@ export default function SocialContact() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={link.name}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
